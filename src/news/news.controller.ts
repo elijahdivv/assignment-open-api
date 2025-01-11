@@ -17,4 +17,13 @@ export class NewsController {
         }
         return this.newsService.searchNews(query);
     }
+
+    @Get('category')
+    async getNewsByCategory(@Query('category') category: string) {
+        if (!category) {
+            return { error: 'Please provide a category using the "category" parameter.' };
+        }
+        return this.newsService.getNewsByCategory(category);
+    }
+
 }
